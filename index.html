@@ -195,7 +195,7 @@ const digits=n=>String(n||"").replace(/[^\d+]/g,"");
 function src(file,preview){const base=(S.base||BASE).replace(/\/?$/,"/");if(preview&&base===BASE&&PREVIEW[file])return PREVIEW[file];return esc(base+file);}
 function waNumber(){return digits(S.whatsapp||S.mobile).replace(/^\+/,"");}
 function build(preview){
-  const real=S; if(preview){S=Object.assign({},real);Object.keys(PH).forEach(k=>{if(!String(S[k]||"").trim())S[k]=PH[k];});}
+  const real=S; if(preview){S=Object.assign({},real);["name","title"].forEach(k=>{if(!String(S[k]||"").trim())S[k]=PH[k];});}
   try{ return buildInner(preview); } finally { S=real; }
 }
 function buildInner(preview){
